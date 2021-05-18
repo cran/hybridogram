@@ -1,0 +1,54 @@
+---
+title: "hybridogram"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{hybridogram}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This package takes a list of hybridization experiment results in a 
+simple text file:
+
+| species 1 | species 2 | code |
+|----------:|:---------:|:-----|
+| Phoca largha | Phoca vitulina | 1 |
+| Phoca largha | Phoca caspica | 2 |
+| Phoca caspica | Pusa hispida | 2 |
+
+---
+
+Another text file contains code for the different hybridization result types:
+
+| code | description |
+|-----:|:------------|
+| 1 | No hybrid |
+| 2 | Documented hybrid |
+| 3 | Hybrid with same 3rd species |
+
+---
+
+Call the hybridogram function:
+```{r eval=FALSE}
+library(hybridogram)
+
+V1 <- c("Phoca largha","Phoca largha","Phoca caspica")
+V2 <- c("Phoca vitulina","Phoca caspica","Pusa hispida")
+V3 <- c(2,3,3)
+hybrid_data <- data.frame(V1,V2,V3)
+C1 <- c(1,2,3)
+C2 <- c("No hybrid","Documented hybrid","Hybrid with same 3rd species")
+codes <- data.frame(C1,C2)
+hybridogram(hybrid_data, codes)
+```
+
+This will produce a heat map, which is the hybridogram. It is a square and
+symmetric heat map showing the hybrid relationships between all pairs of species.
+A color legend in the lower right corner shows what color each code is represented by.
