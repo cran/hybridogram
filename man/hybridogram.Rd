@@ -15,10 +15,10 @@ nil
 R package which takes a list of hybridization results along
 with a code and creates a heat map.
 
-Version 2.3
+Version 0.3.2
 Author: Dr. Matthew Cserhati
 Email: csmatyi@protonmail.com
-May 15, 2021
+May 21, 2021
 }
 \examples{
 V1 <- c("Phoca largha","Phoca largha","Phoca caspica")
@@ -26,7 +26,7 @@ V2 <- c("Phoca vitulina","Phoca caspica","Pusa hispida")
 V3 <- c(2,3,3)
 hybrid_data <- data.frame(V1,V2,V3)
 C1 <- c(1,2,3)
-C2 <- c("No hybrid","Documented hybrid","Hybrid with same 3rd species")
+C2 <- c("No hybrid","Hybrid with same 3rd species","Documented hybrid")
 codes <- data.frame(C1,C2)
 hybridogram(hybrid_data, codes)
 

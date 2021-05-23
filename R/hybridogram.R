@@ -3,10 +3,10 @@
 #' @description R package which takes a list of hybridization results along
 #' with a code and creates a heat map.
 #'
-#' Version 2.3
+#' Version 0.3.2
 #' Author: Dr. Matthew Cserhati
 #' Email: csmatyi@protonmail.com
-#' May 15, 2021
+#' May 21, 2021
 #'
 #' @importFrom grDevices colorRampPalette dev.off jpeg
 #' @importFrom graphics box legend
@@ -24,12 +24,12 @@
 #' V3 <- c(2,3,3)
 #' hybrid_data <- data.frame(V1,V2,V3)
 #' C1 <- c(1,2,3)
-#' C2 <- c("No hybrid","Documented hybrid","Hybrid with same 3rd species")
+#' C2 <- c("No hybrid","Hybrid with same 3rd species","Documented hybrid")
 #' codes <- data.frame(C1,C2)
 #' hybridogram(hybrid_data, codes)
 #'
 #' @export
-utils::globalVariables(c("exit","heatmap.2"))
+utils::globalVariables(c("exit","pheatmap"))
 hybridogram <- function(hybrid_data, codes) {
   if ((dim(hybrid_data)[1] < 2) | (dim(hybrid_data)[2] != 3)) {
     print("Improper format of hybridization file!")
@@ -80,14 +80,8 @@ hybridogram <- function(hybrid_data, codes) {
   }
 
   clrplt <- descrs_colors_vector
-  cexx <- 2
-  ceyy <- cexx
+  n_colors <- n_codes - 1
 
-  h <- gplots::heatmap.2(H,dendrogram="none",Rowv=NA,Colv=NA,col=clrplt,margin=c(25,25),trace="none",
-            symkey=F,key=F,scale="none",cexRow=cexx,cexCol=ceyy,sepcolor="both",
-            labCol=as.expression(lapply(colnames(H), function(a) bquote(italic(.(a))))),
-            labRow=as.expression(lapply(rownames(H), function(a) bquote(italic(.(a))))))
-
-  legend(x="bottomright",legend=codes$description,cex=1,fill=clrplt)
-  box(which="plot",lty="solid")
+  pheatmap::pheatmap(H, cluster_row = FALSE, cluster_col=FALSE,
+       legend_breaks = 0:n_colors, color=clrplt, legend_labels = codes$description)
 }

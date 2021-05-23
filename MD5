@@ -1,9 +1,9 @@
-24cb9738a6d395ca2810d78423baa35b *DESCRIPTION
+ed960a1d81d6b1fb4b86791ca9f62f6a *DESCRIPTION
 f5dffc673c30716f1f4e74f48efd8040 *NAMESPACE
-9231599b4d98e7d6b9711f53a579ce3b *R/hybridogram.R
+a98d644ce6153f6d63a8fb48c32847f4 *R/hybridogram.R
 9888e6cf7eb0e9b3e927888d264d0da6 *build/vignette.rds
 6b0f446f1b1017328a06ccd796e65843 *inst/doc/hybridogram.R
 3e2ad34e9d34de032e4775214c725097 *inst/doc/hybridogram.Rmd
 a4f3cf005718a5984b9cfaa1e7415d3b *inst/doc/hybridogram.html
-726235b01be5aa95a946c2e248cf270c *man/hybridogram.Rd
+ba330e993d7984360e8155535b1dfdaa *man/hybridogram.Rd
 3e2ad34e9d34de032e4775214c725097 *vignettes/hybridogram.Rmd
